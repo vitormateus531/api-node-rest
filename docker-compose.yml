@@ -28,3 +28,9 @@ services:
       - "3000:3000"
     volumes:
       - .:/usr/app
+    links:
+      - mysql
+      - postgresql
+    depends_on:
+      - mysql
+      - postgresql
