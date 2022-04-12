@@ -1,7 +1,6 @@
 const express = require('express');
 const jwt = require('../../helpers/jwtHelper');
-const mysql = require('../../core/dbMysql');
-const postgres = require('../../core/dbPostgree');
+const model = require('../../core/model');
 const router = express.Router();
 
 
@@ -17,10 +16,10 @@ router.post('/', express.json(), (req,res) => {
 
     try{
         (async () => {
-            let data = {name : name,password: password};
+            let data = {name : name, password: password, workplace: workplace};
             switch(workplace){
                 case 'macapa':
-                     const verifyMacapa = await mysql.verifyIfExistsUsers(data);
+                     const verifyMacapa = await model.existUser(data);
                      if(verifyMacapa[0].countUser > 0){
                         let generate = jwt.generateToken(name,password,workplace);
                         let promise = Promise.resolve(generate);
@@ -32,7 +31,7 @@ router.post('/', express.json(), (req,res) => {
                      }
                     break;
                 case 'varejao':
-                      const verifyVarejao = await postgres.verifyIfExistsUsers(data);
+                      const verifyVarejao = await model.existUser(data);
                       if(parseInt(verifyVarejao[0].countuser) > 0){
                         let generate = jwt.generateToken(name,password,workplace);
                         let promise = Promise.resolve(generate);

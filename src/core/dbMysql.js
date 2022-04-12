@@ -20,6 +20,12 @@ async function verifyIfExistsUsers(data){
     return rows;
 }
 
+async function listContact(data){
+    const conn = await connect();
+    const [rows] = await conn.query('SELECT * FROM contacts');
+    return rows;
+}
 
-module.exports = {insertUsers, verifyIfExistsUsers};
+
+module.exports = {insertUsers, verifyIfExistsUsers, listContact};
  

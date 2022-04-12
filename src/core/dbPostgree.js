@@ -25,4 +25,10 @@ async function verifyIfExistsUsers(data){
     return res.rows;
 }
 
-module.exports = {insertUsers, verifyIfExistsUsers};
+async function listContact(){
+    const conn = await connect();
+    const [rows] = await conn.query('SELECT * FROM contacts');
+    return rows;
+}
+
+module.exports = {insertUsers, verifyIfExistsUsers, listContact};
