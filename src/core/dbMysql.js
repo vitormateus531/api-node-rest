@@ -6,10 +6,10 @@ async function connect(){
     return connection;
 }
 
-async function insertUsers(data){
+async function insertContacts(data){
     const conn = await connect();
-    const sql = 'insert into users(name, password) values (?, ?)';
-    const values = [data.name, data.password];
+    const sql = 'insert into contacts(nome, celular) values (?, ?)';
+    const values = [data.name, data.cellphone];
     await conn.query(sql, values);
 }
 
@@ -27,5 +27,5 @@ async function listContact(data){
 }
 
 
-module.exports = {insertUsers, verifyIfExistsUsers, listContact};
+module.exports = {insertContacts, verifyIfExistsUsers, listContact};
  

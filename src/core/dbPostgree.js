@@ -10,10 +10,10 @@ async function connect() {
     return pool.connect();
 }
 
-async function insertUsers(data){
+async function insertContacts(data){
     const client = await connect();
-    const sql = 'INSERT INTO "users"(name,password) VALUES ($1,$2)';
-    const values = [data.name, data.password];
+    const sql = 'INSERT INTO "contacts"(nome,celular) VALUES ($1,$2)';
+    const values = [data.name, data.cellphone];
     return await client.query(sql, values);
     
 }
@@ -27,8 +27,8 @@ async function verifyIfExistsUsers(data){
 
 async function listContact(){
     const conn = await connect();
-    const [rows] = await conn.query('SELECT * FROM contacts');
-    return rows;
+    const res = await conn.query('SELECT * FROM contacts');
+    return res.rows;
 }
 
-module.exports = {insertUsers, verifyIfExistsUsers, listContact};
+module.exports = {verifyIfExistsUsers, listContact, insertContacts};

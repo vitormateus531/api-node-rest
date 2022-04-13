@@ -5,6 +5,10 @@ const router = express.Router();
 
 
 router.get('/', express.json(), (req,res) => {
+
+    if(!req.headers.authorization){
+        res.status(401).send({message: 'não autorizado'});
+    }
     
     let validation = jwt.verifyToken(req.headers.authorization.replace('Bearer ',''));
     let promise = Promise.resolve(validation);

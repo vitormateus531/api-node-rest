@@ -3,13 +3,15 @@ const mysql = require('./dbMysql');
 
 
 async function contacts(workplace){
+    let result;
     switch(workplace){
         case 'macapa':
-            mysql.listContact();
+            await mysql.listContact();
             break;
         default:
-            postgres.listContact();
+            await postgres.listContact();
     }
+    return result;
 }
 
 async function existUser(data){
@@ -24,4 +26,20 @@ async function existUser(data){
     return result;
 }
 
-module.exports = {contacts, existUser}
+async function insertContact(data){
+    let result = 'contato inserido com sucesso.';
+    try{
+        switch(data.workplace){
+            case 'macapa':
+                await mysql.insertContacts(data);
+                break;
+            default:
+               await postgres.insertContacts(data);
+        }
+        return result;
+    }catch(e){
+        result = e;
+    }
+}
+
+module.exports = {contacts, existUser, insertContact}
