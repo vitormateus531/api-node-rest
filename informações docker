@@ -1,0 +1,20 @@
+dockehub link de imagens para o docker 
+
+-> https://hub.docker.com/
+
+---------------------------------------------------
+
+comando rodar docker 
+
+-> docker-compose up
+
+
+sudo dpkg -i mysql-workbench-community_8.0.28-1ubuntu21.10_amd64.deb
+
+
+https://www.youtube.com/watch?v=7_YrwTOPl9w
+
+---------------------------------------------------
+
+
+obs: quando for se conectar com base de dados no docker usa- se o nome do SERVIÇO 
