@@ -12,6 +12,7 @@ router.post('/', express.json(), (req,res) => {
 
     if((password == '' || password == undefined) || (name == '' || name == undefined) || (workplace == '' || workplace == undefined) ){
         res.status(405).send({message:'Todos os campos precisam estar preenchidos.'});
+        return;
     }
 
     try{
