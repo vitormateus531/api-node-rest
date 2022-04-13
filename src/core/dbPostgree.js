@@ -14,7 +14,7 @@ async function insertContacts(data){
     const client = await connect();
     const sql = 'INSERT INTO "contacts"(nome,celular) VALUES ($1,$2)';
     const values = [data.name, data.cellphone];
-    return await client.query(sql, values);
+    await client.query(sql, values);
     
 }
 

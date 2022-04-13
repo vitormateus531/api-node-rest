@@ -6,10 +6,10 @@ async function contacts(workplace){
     let result;
     switch(workplace){
         case 'macapa':
-            await mysql.listContact();
+          result =  await mysql.listContact();
             break;
         default:
-            await postgres.listContact();
+           result = await postgres.listContact();
     }
     return result;
 }

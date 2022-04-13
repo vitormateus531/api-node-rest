@@ -20,7 +20,7 @@ async function verifyIfExistsUsers(data){
     return rows;
 }
 
-async function listContact(data){
+async function listContact(){
     const conn = await connect();
     const [rows] = await conn.query('SELECT * FROM contacts');
     return rows;
