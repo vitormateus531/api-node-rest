@@ -1,8 +1,8 @@
-# Sistema de gerenciamento de veículos
+# Sistema de contatos
 
 #### Instrução
 
-  - Dsenevolver uma api que faça autenticação e insira uma lista de contatos na base.
+  - Desenvolver uma api que faça autenticação e insira uma lista de contatos na base.
  
 
 #### Pré-requisitos
